@@ -37,27 +37,39 @@ def help_command(update: Update, context: CallbackContext) -> None:
 
 def send_image(update: Update, context: CallbackContext) -> None:
     """send image to tag."""
-    img = random.choice(os.listdir(conf.PATH_FOLDER))
     semaphore = Semaphore(1)
-    semaphore.acquire()
-    with open('finished.txt', 'r') as f:
-        finished = f.readlines()
-    while img in finished:
-        img = random.choice(os.listdir(conf.PATH_FOLDER))
+    semaphore.acquire(timeout=0.5)
+    if conf.LOCAL == 'true':
+        img_id = random.choice(os.listdir(conf.PATH_FOLDER))
+        with open('finished.txt', 'r') as f:
+            finished = f.readlines()
+        while img_id in finished:
+            img_id = random.choice(os.listdir(conf.PATH_FOLDER))
 
-    image = os.path.join(conf.PATH_FOLDER, img)
-    with open(image, 'rb') as f:
-        update.message.reply_photo(photo=f)
-    semaphore.release()
-
+        image = os.path.join(conf.PATH_FOLDER, img_id)
+        with open(image, 'rb') as f:
+            update.message.reply_photo(photo=f)
+        semaphore.release()
+    else:
+        with open('url_images.txt', 'r') as f:
+            lines = f.readlines()
+        image = random.choice(lines)
+        img_id = image.split(';')[0]
+        with open('finished.txt', 'r') as f:
+            finished = f.readlines()
+        while img_id in finished:
+            image = random.choice(lines)
+            img_id = image.split(';')[0]
+        semaphore.release()
+        update.message.reply_photo(photo=image.split(';')[1])
     keyboard = []
     i = 0
     if len(conf.buttons) % 2 == 1:
-        keyboard.append([InlineKeyboardButton(conf.buttons[i], callback_data=img + ',' + conf.buttons[i])])
+        keyboard.append([InlineKeyboardButton(conf.buttons[i], callback_data=img_id + ',' + conf.buttons[i])])
         i = i + 1
     for x in range(len(conf.buttons) // 2):
-        keyboard.append([InlineKeyboardButton(conf.buttons[i], callback_data=img + ',' + conf.buttons[i]),
-                         InlineKeyboardButton(conf.buttons[i + 1], callback_data=img + ',' + conf.buttons[i + 1])])
+        keyboard.append([InlineKeyboardButton(conf.buttons[i], callback_data=img_id + ',' + conf.buttons[i]),
+                         InlineKeyboardButton(conf.buttons[i + 1], callback_data=img_id + ',' + conf.buttons[i + 1])])
         i += 2
 
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -69,7 +81,7 @@ def button(update: Update, context: CallbackContext) -> None:
     query.answer()
     query.edit_message_text(text=f"Chose: {query.data.split(',')[1]}")
     semaphore = Semaphore(1)
-    semaphore.acquire()
+    semaphore.acquire(timeout=0.5)
     with open("log.txt", 'a') as f:
         f.write(query.data + '\n')
 
