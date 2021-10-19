@@ -32,7 +32,7 @@ def start(update: Update, context: CallbackContext) -> None:
 
 
 def help_command(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('you can get help visiting https://github.com/diesilveira/labeller_images_telegramBOT')
+    update.message.reply_text('you can get help visiting https://github.com/diesilveira/labeller_img_python_telegram_BOT')
 
 
 def send_image(update: Update, context: CallbackContext) -> None:
