@@ -40,3 +40,5 @@ It arose as a response to one of the great problems with image sets, we do not k
 In the log.txt file the names of the images will be saved with their respective labels and in the finished file the images that have already been labeled so as not to label them twice
 
 The buttons will be shown in two columns, in case the number of buttons is odd, the first one will occupy the entire row
+
+You can see my own bot https://t.me/CleanDirtyContainer_bot inspired by Rodrigo's ML project on the classification of garbage containers in the Montevideo city https://github.com/rola93/clean-dirty-preprocess-baseline.
