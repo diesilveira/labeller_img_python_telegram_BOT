@@ -10,7 +10,7 @@ $ pip install python-telegram-bot --upgrade
 Create a configuration file in the same folder as main.py with the name conf.py
 copy and paste the following text:
 
-    TOKEN: str = 'TOUR TOKEN'
+    TOKEN: str = 'YOUR TOKEN'
 
     # Like D:/Descargas/cleanAndDirtyImages
     PATH_FOLDER: str = 'YOUR PATH'
