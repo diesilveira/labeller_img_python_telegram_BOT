@@ -27,12 +27,12 @@ def start(update: Update, context: CallbackContext) -> None:
     """Send a message when the command /start is issued."""
     user = update.effective_user
     update.message.reply_markdown_v2(
-        fr'Hello {user.mention_markdown_v2()}\!, send me "/image"'
+        fr'Hello {user.mention_markdown_v2()}\!, send me the word "/image"'
     )
 
 
 def help_command(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('you can get help visiting https://github.com/diesilveira/labeller_images_telegramBOT')
+    update.message.reply_text('you can get help visiting https://github.com/diesilveira/labeller_img_python_telegram_BOT')
 
 
 def send_image(update: Update, context: CallbackContext) -> None:
@@ -67,7 +67,7 @@ def send_image(update: Update, context: CallbackContext) -> None:
 def button(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
     query.answer()
-    query.edit_message_text(text=f"You chose: {query.data.split(',')[1]}")
+    query.edit_message_text(text=f"Chose: {query.data.split(',')[1]}")
     semaphore = Semaphore(1)
     semaphore.acquire()
     with open("log.txt", 'a') as f:
