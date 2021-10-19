@@ -5,9 +5,10 @@ This is a bot to help collect data for any machine learning project
 It was developed using the python-telegram-bot library that you can access from the following link: https://github.com/python-telegram-bot/python-telegram-bot
 
 ## Usage
-To be able to use it you just have to download it, install telegram for python:
+To be able to use it you just have to download the repo, and install telegram for python:
 
 ```bash
+git clone https://github.com/diesilveira/labeller_img_python_telegram_BOT.git
 pip install python-telegram-bot --upgrade
 ```
 ### Steps
