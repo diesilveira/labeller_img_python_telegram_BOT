@@ -29,11 +29,14 @@ https://core.telegram.org/bots
   botFather send you your TOKEN.
   
 In PATH_FOLDER you must put the path of the folder that contains your set images
-in buttons, the name of the buttons, or labels for the image you sent.
-and finally in question the question that you will send to next to image.
+
+In buttons, the name of the buttons, or labels for the image you sent, you can put all the buttons you want
+And finally in question the question that you will send to next to image.
 
 Last, run the project and voila, the bot is running now.
 
 It arose as a response to one of the great problems with image sets, we do not know which is which, or how to receive feedback from other people about the images we have in order to better label them.
 
 In the log.txt file the names of the images will be saved with their respective labels and in the finished file the images that have already been labeled so as not to label them twice
+
+The buttons will be shown in two columns, in case the number of buttons is odd, the first one will occupy the entire row
