@@ -18,6 +18,8 @@ copy and paste the following text:
     buttons = ["BUTTON1", "BUTTON2", "BUTTON3", "BUTTON4"]
     
     question = 'QUESTION TO THE PEOPLE ABOUT THE IMAGE?'
+    
+    LOCAL = 'false'
 
 In TOKEN you must write the token of your bot, previously created following the steps of telegram
 https://core.telegram.org/bots
@@ -31,7 +33,9 @@ https://core.telegram.org/bots
 In PATH_FOLDER you must put the path of the folder that contains your set images
 
 In buttons, the name of the buttons, or labels for the image you sent, you can put all the buttons you want
-And finally in question the question that you will send to next to image.
+In question, the question that you will send to next to image.
+
+And finally if you have to run with images from web, set LOCAL='false' like at the example, you must to have a file named "url_images.txt" in the same folder of the main.py that contains the name of the image, and the url separated by ";". this is very important!
 
 Last, run the project and voila, the bot is running now.
 
