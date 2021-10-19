@@ -4,9 +4,13 @@ This is a bot to help collect data for any machine learning project
 
 It was developed using the python-telegram-bot library that you can access from the following link: https://github.com/python-telegram-bot/python-telegram-bot
 
+## Usage
 To be able to use it you just have to download it, install telegram for python:
-$ pip install python-telegram-bot --upgrade
 
+```bash
+pip install python-telegram-bot --upgrade
+```
+### Steps
 Create a configuration file in the same folder as main.py with the name conf.py
 copy and paste the following text:
 
@@ -39,13 +43,18 @@ And finally if you have to run with images from web, set LOCAL='false' like at t
 
 Last, run the project and voila, the bot is running now.
 
-It arose as a response to one of the great problems with image sets, we do not know which is which, or how to receive feedback from other people about the images we have in order to better label them.
-
 In the log.txt file the names of the images will be saved with their respective labels and in the finished file the images that have already been labeled so as not to label them twice
 
 The buttons will be shown in two columns, in case the number of buttons is odd, the first one will occupy the entire row
 
+## motivation
+It arose as a response to one of the great problems with image sets, we do not know which is which, or how to receive feedback from other people about the images we have in order to better label them.
+
+## My Own bot
 You can see my own bot https://t.me/CleanDirtyContainer_bot inspired by Rodrigo's ML project on the classification of garbage containers in the Montevideo city https://github.com/rola93/clean-dirty-preprocess-baseline.
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
