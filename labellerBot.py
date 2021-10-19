@@ -35,8 +35,7 @@ def help_command(update: Update, context: CallbackContext) -> None:
     update.message.reply_text('you can get help visiting https://github.com/diesilveira/labeller_img_python_telegram_BOT')
 
 
-def send_image(update: Update, context: CallbackContext) -> None:
-    """send image to tag."""
+def get_image():
     semaphore = Semaphore(1)
     semaphore.acquire(timeout=0.5)
     if conf.LOCAL == 'true':
@@ -47,9 +46,8 @@ def send_image(update: Update, context: CallbackContext) -> None:
             img_id = random.choice(os.listdir(conf.PATH_FOLDER))
 
         image = os.path.join(conf.PATH_FOLDER, img_id)
-        with open(image, 'rb') as f:
-            update.message.reply_photo(photo=f)
         semaphore.release()
+
     else:
         with open('url_images.txt', 'r') as f:
             lines = f.readlines()
@@ -61,7 +59,23 @@ def send_image(update: Update, context: CallbackContext) -> None:
             image = random.choice(lines)
             img_id = image.split(';')[0]
         semaphore.release()
+
+    return [image, img_id]
+
+
+def send_image(update: Update, context: CallbackContext) -> None:
+    """send image to tag."""
+
+    image_path_and_id = get_image()
+    image = image_path_and_id[0]
+    img_id = image_path_and_id[1]
+
+    if conf.LOCAL == 'true':
+        with open(image, 'rb') as f:
+            update.message.reply_photo(photo=f)
+    else:
         update.message.reply_photo(photo=image.split(';')[1])
+
     keyboard = []
     i = 0
     if len(conf.buttons) % 2 == 1:
