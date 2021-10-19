@@ -35,3 +35,5 @@ and finally in question the question that you will send to next to image.
 Last, run the project and voila, the bot is running now.
 
 It arose as a response to one of the great problems with image sets, we do not know which is which, or how to receive feedback from other people about the images we have in order to better label them.
+
+In the log.txt file the names of the images will be saved with their respective labels and in the finished file the images that have already been labeled so as not to label them twice
