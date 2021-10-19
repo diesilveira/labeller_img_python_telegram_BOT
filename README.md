@@ -46,3 +46,6 @@ In the log.txt file the names of the images will be saved with their respective 
 The buttons will be shown in two columns, in case the number of buttons is odd, the first one will occupy the entire row
 
 You can see my own bot https://t.me/CleanDirtyContainer_bot inspired by Rodrigo's ML project on the classification of garbage containers in the Montevideo city https://github.com/rola93/clean-dirty-preprocess-baseline.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
