@@ -4,15 +4,15 @@ This is a bot to help collect data for any machine learning project
 
 It was developed using the python-telegram-bot library that you can access from the following link: https://github.com/python-telegram-bot/python-telegram-bot
 
-## Usage
-To be able to use it you just have to download the repo, and install telegram for python:
+## Usage & steps
+1. download the repo, and install python-telegram-bot:
 
 ```bash
 git clone https://github.com/diesilveira/labeller_img_python_telegram_BOT.git
 pip install python-telegram-bot --upgrade
 ```
-### Steps
-Create a configuration file in the same folder as main.py with the name conf.py
+
+2. Create a configuration file in the same folder as main.py with the name conf.py
 copy and paste the following text:
 
     TOKEN: str = 'YOUR TOKEN'
@@ -29,11 +29,10 @@ copy and paste the following text:
 In TOKEN you must write the token of your bot, previously created following the steps of telegram
 https://core.telegram.org/bots
 
-  In resume:
-  send /newbot to BotFather from your telegram
-  then you must set the name, shortname and description(optional)
-  
-  botFather send you your TOKEN.
+  For create a bot with telegram and get your TOKEN:
+  * send /newbot to BotFather from your telegram
+  * then you must set the name, shortname and description(optional)
+  * botFather send you your TOKEN.
   
 In PATH_FOLDER you must put the path of the folder that contains your set images
 
@@ -42,7 +41,7 @@ In question, the question that you will send to next to image.
 
 And finally if you have to run with images from web, set LOCAL='false' like at the example, you must to have a file named "url_images.txt" in the same folder of the main.py that contains the name of the image, and the url separated by ";". this is very important!
 
-Last, run the project and voila, the bot is running now.
+3. Last, RUN the project and voila, the bot is running now.
 
 In the log.txt file the names of the images will be saved with their respective labels and in the finished file the images that have already been labeled so as not to label them twice
 
