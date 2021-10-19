@@ -27,7 +27,7 @@ def start(update: Update, context: CallbackContext) -> None:
     """Send a message when the command /start is issued."""
     user = update.effective_user
     update.message.reply_markdown_v2(
-        fr'Hello {user.mention_markdown_v2()}\!, send me the word "/image"'
+        fr'Hello {user.mention_markdown_v2()}\! send me the word "/image"'
     )
 
 
@@ -78,22 +78,22 @@ def send_image(update: Update, context: CallbackContext) -> None:
 
     keyboard = []
     i = 0
-    if len(conf.buttons) % 2 == 1:
-        keyboard.append([InlineKeyboardButton(conf.buttons[i], callback_data=img_id + ',' + conf.buttons[i])])
+    if len(conf.BUTTONS) % 2 == 1:
+        keyboard.append([InlineKeyboardButton(conf.BUTTONS[i], callback_data=img_id + ',' + conf.BUTTONS[i])])
         i = i + 1
-    for x in range(len(conf.buttons) // 2):
-        keyboard.append([InlineKeyboardButton(conf.buttons[i], callback_data=img_id + ',' + conf.buttons[i]),
-                         InlineKeyboardButton(conf.buttons[i + 1], callback_data=img_id + ',' + conf.buttons[i + 1])])
+    for x in range(len(conf.BUTTONS) // 2):
+        keyboard.append([InlineKeyboardButton(conf.BUTTONS[i], callback_data=img_id + ',' + conf.BUTTONS[i]),
+                         InlineKeyboardButton(conf.BUTTONS[i + 1], callback_data=img_id + ',' + conf.BUTTONS[i + 1])])
         i += 2
 
     reply_markup = InlineKeyboardMarkup(keyboard)
-    update.message.reply_text(conf.question, reply_markup=reply_markup)
+    update.message.reply_text(conf.QUESTION, reply_markup=reply_markup)
 
 
 def button(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
     query.answer()
-    query.edit_message_text(text=f"Chose: {query.data.split(',')[1]}")
+    query.edit_message_text(text=f"{conf.CHOSE} {query.data.split(',')[1]}")
     semaphore = Semaphore(1)
     semaphore.acquire(timeout=0.5)
     with open("log.txt", 'a') as f:
