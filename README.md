@@ -27,9 +27,8 @@ CHOSE = 'Chose: '
 ```
 
 In TOKEN you must copy and paste the token of your bot, previously created.<br>
-you can see how to at: https://core.telegram.org/bots or following these steps:
-
-  For create a bot with telegram and get your TOKEN:
+You can see how to at: https://core.telegram.org/bots or following these steps:<br>
+For create a bot with telegram and get your TOKEN:
   * send /newbot to BotFather from your telegram
   * then you must to set the name, shortname and description(optional)
   * botFather send you your TOKEN.
