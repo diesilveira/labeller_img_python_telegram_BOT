@@ -13,17 +13,19 @@ copy and paste the following text:
 
     # Like D:/Descargas/cleanAndDirtyImages
     PATH_FOLDER: str = 'YOUR PATH'
+    
     buttons = ["BUTTON1", "BUTTON2", "BUTTON3", "BUTTON4"]
+    
     question = 'QUESTION TO THE PEOPLE ABOUT THE IMAGE?'
 
 In TOKEN you must write the token of your bot, previously created following the steps of telegram
 https://core.telegram.org/bots
 
-  In resume:
-   send /newbot to BotFather from your telegram
-   then you must set the name, shortname and description(optional)
+  *In resume:
+  send /newbot to BotFather from your telegram
+  then you must set the name, shortname and description(optional)
   
-   botFather send you your TOKEN.
+  *botFather send you your TOKEN.
   
 In PATH_FOLDER you must put the path of the folder that contains your set images
 in buttons, the name of the buttons, or labels for the image you sent.
