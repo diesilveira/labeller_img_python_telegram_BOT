@@ -1,7 +1,6 @@
 # labeller_images_python_telegramBOT
 
-This is a bot to help collect data for any machine learning project
-
+This is a bot to help collect data for any machine learning project. <br>
 It was developed using the python-telegram-bot library that you can access from the following link: https://github.com/python-telegram-bot/python-telegram-bot
 
 ## Usage & steps
@@ -15,31 +14,31 @@ pip install python-telegram-bot --upgrade
 2. Create a configuration file in the same folder as main.py with the name conf.py
 copy and paste the following text:
 
-    TOKEN: str = 'YOUR TOKEN'
+```bash
+TOKEN: str = 'YOUR TOKEN'
 
-    # Like D:/Descargas/cleanAndDirtyImages
-    PATH_FOLDER: str = 'YOUR PATH'
-    
-    buttons = ["BUTTON1", "BUTTON2", "BUTTON3", "BUTTON4"]
-    
-    question = 'QUESTION TO THE PEOPLE ABOUT THE IMAGE?'
-    
-    LOCAL = 'false'
+#Like D:/Descargas/cleanAndDirtyImages
+PATH_FOLDER: str = 'YOUR PATH'
+LOCAL = 'false'
 
-In TOKEN you must write the token of your bot, previously created following the steps of telegram
-https://core.telegram.org/bots
+BUTTONS = ["BUTTON1", "BUTTON2", "BUTTON3", "BUTTON4"]
+QUESTION = 'QUESTION TO THE PEOPLE ABOUT THE IMAGE?'
+CHOSE = 'Chose: '
+```
+
+In TOKEN you must copy and paste the token of your bot, previously created.<br>
+you can see how to at: https://core.telegram.org/bots or following these steps:
 
   For create a bot with telegram and get your TOKEN:
   * send /newbot to BotFather from your telegram
-  * then you must set the name, shortname and description(optional)
+  * then you must to set the name, shortname and description(optional)
   * botFather send you your TOKEN.
   
-In PATH_FOLDER you must put the path of the folder that contains your set images
+In PATH_FOLDER you must put the path of the folder that contains your set images (for run local with images in your pc)<br>
+If you want to use images from the web you must set LOCAL = 'false', create a file named "url_images.txt" in the same folder of the main.py that contains the name of the image, and the url separated by ";". this is very important!
 
-In buttons, the name of the buttons, or labels for the image you sent, you can put all the buttons you want
+In buttons, the name of the buttons, or labels for the image you sent. You can put all the buttons you want.<br>
 In question, the question that you will send to next to image.
-
-And finally if you have to run with images from web, set LOCAL='false' like at the example, you must to have a file named "url_images.txt" in the same folder of the main.py that contains the name of the image, and the url separated by ";". this is very important!
 
 3. Last, RUN the project and voila, the bot is running now.
 
@@ -47,7 +46,7 @@ In the log.txt file the names of the images will be saved with their respective 
 
 The buttons will be shown in two columns, in case the number of buttons is odd, the first one will occupy the entire row
 
-## motivation
+## Motivation
 It arose as a response to one of the great problems with image sets, we do not know which is which, or how to receive feedback from other people about the images we have in order to better label them.
 
 ## My Own bot
