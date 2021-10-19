@@ -4,4 +4,6 @@ log.txt
 requirements.txt
 url_images.txt
 Procfile
-
+venv/
+.idea/
+__pycache__/
