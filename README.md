@@ -35,7 +35,7 @@ For create a bot with telegram and get your TOKEN:
   * botFather send you your TOKEN.
   
 In PATH_FOLDER you must put the path of the folder that contains your set images (for run local with images in your pc)<br>
-If you want to use images from the web you must set LOCAL = 'false', create a file named "url_images.txt" in the same folder of the main.py that contains the name of the image, and the url separated by ";". this is very important!
+If you want to use images from the web you must set LOCAL = 'false', create a file named "url_images.txt" in the same folder of the main.py that contains the name of the image, and the url separated by ";". importan: the url link provided must be a direct link to the file!
 
 In buttons, the name of the buttons, or labels for the image you sent. You can put all the buttons you want.<br>
 In question, the question that you will send to next to image.
