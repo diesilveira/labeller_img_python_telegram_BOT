@@ -1,6 +1,8 @@
 import logging
 import os
 import random
+
+import telegram
 import conf
 from threading import *
 
@@ -23,12 +25,13 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+
 def start(update: Update, context: CallbackContext) -> None:
     """Send a message when the command /start is issued."""
     user = update.effective_user
     update.message.reply_markdown_v2(
-        fr'Hello {user.mention_markdown_v2()}\! send me the word "/image"'
-    )
+        fr'Hello {user.mention_markdown_v2()}\! send me the word "/image"')
+    send_image(update, context, update.message.chat_id)
 
 
 def help_command(update: Update, context: CallbackContext) -> None:
@@ -63,18 +66,19 @@ def get_image():
     return [image, img_id]
 
 
-def send_image(update: Update, context: CallbackContext) -> None:
+def send_image(update: Update, context: CallbackContext, chat_id) -> None:
     """send image to tag."""
 
+    bot = telegram.Bot(conf.TOKEN)
     image_path_and_id = get_image()
     image = image_path_and_id[0]
     img_id = image_path_and_id[1]
 
     if conf.LOCAL == 'true':
         with open(image, 'rb') as f:
-            update.message.reply_photo(photo=f)
+            bot.send_photo(chat_id=chat_id, photo=f)
     else:
-        update.message.reply_photo(photo=image.split(';')[1])
+        bot.send_photo(chat_id=chat_id, photo=image.split(';')[1])
 
     keyboard = []
     i = 0
@@ -93,6 +97,8 @@ def send_image(update: Update, context: CallbackContext) -> None:
 def button(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
     query.answer()
+    print(update)
+    print(update.to_json().split(':')[3].split(',')[0].strip())
     query.edit_message_text(text=f"{conf.CHOSE} {query.data.split(',')[1]}")
     semaphore = Semaphore(1)
     semaphore.acquire(timeout=0.5)
@@ -102,3 +108,4 @@ def button(update: Update, context: CallbackContext) -> None:
     with open('finished.txt', 'a') as f:
         f.write(query.data.split(',')[0] + '\n')
     semaphore.release()
+    send_image(update, context, update.to_json().split(':')[14].split(',')[0].strip())
