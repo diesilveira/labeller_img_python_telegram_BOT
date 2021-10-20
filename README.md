@@ -8,6 +8,7 @@ It was developed using the python-telegram-bot library that you can access from 
 
 ```bash
 git clone https://github.com/diesilveira/labeller_img_python_telegram_BOT.git
+cd labeller_img_python_telegram_BOT
 pip install python-telegram-bot --upgrade
 ```
 
