@@ -8,3 +8,4 @@ venv/
 .idea/
 __pycache__/
 convertToLinkGoogleDriveDownloader.py
+driveLinksInicial.txt

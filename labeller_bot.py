@@ -3,7 +3,7 @@ import os
 import random
 import conf
 
-from threading import *
+import threading
 
 from telegram import (
     Update,
@@ -39,7 +39,7 @@ def help_command(update: Update, context: CallbackContext) -> None:
 def get_image():
     semaphore = Semaphore(1)
     semaphore.acquire(timeout=0.5)
-    if conf.LOCAL == 'true':
+    if conf.LOCAL:
         img_id = random.choice(os.listdir(conf.PATH_FOLDER))
         with open('finished.txt', 'r') as f:
             finished = f.readlines()
@@ -71,7 +71,7 @@ def send_image(update: Update, context: CallbackContext) -> None:
     image = image_path_and_id[0]
     img_id = image_path_and_id[1]
 
-    if conf.LOCAL == 'true':
+    if conf.LOCAL:
         with open(image, 'rb') as f:
             update.message.reply_photo(photo=f)
     else:
