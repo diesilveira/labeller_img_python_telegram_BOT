@@ -1,3 +1,10 @@
 conf.py
 finished.txt
 log.txt
+requirements.txt
+url_images.txt
+Procfile
+venv/
+.idea/
+__pycache__/
+convertToLinkGoogleDriveDownloader.py
