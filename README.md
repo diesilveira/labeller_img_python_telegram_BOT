@@ -1,7 +1,7 @@
 # labeller_images_python_telegramBOT
 
 This is a bot to help collect data for any machine learning project. <br>
-It was developed using the python-telegram-bot library that you can access from the following link: https://github.com/python-telegram-bot/python-telegram-bot
+It was developed using the [python-telegram-bot](https://python-telegram-bot.org/)
 
 ## Usage & steps
 1. download the repo, and install python-telegram-bot:
@@ -29,7 +29,7 @@ GREETING = ' Welcome and thanks for your help!'
 ```
 
 In TOKEN you must copy and paste the token of your bot, previously created.<br>
-You can see how to at: https://core.telegram.org/bots or following these steps:<br>
+You can see how to at: [How do I create a bot? - telegram](https://core.telegram.org/bots#3-how-do-i-create-a-bot) or following these steps:<br>
 For create a bot with telegram and get your TOKEN:
   * send /newbot to BotFather from your telegram
   * then you must to set the name, shortname and description(optional)
@@ -51,7 +51,7 @@ The buttons will be shown in two columns, in case the number of buttons is odd, 
 It arose as a response to one of the great problems with image sets, we do not know which is which, or how to receive feedback from other people about the images we have in order to better label them.
 
 ## My Own bot
-You can see my own bot https://t.me/CleanDirtyContainer_bot inspired by Rodrigo's ML project on the classification of garbage containers in the Montevideo city https://github.com/rola93/clean-dirty-preprocess-baseline.
+Hi! I'm [Diego](https://www.linkedin.com/in/diego-silveira-ing-informatica-uy/) and you can see my own bot [CleanDirtyContainer_bot](https://t.me/CleanDirtyContainer_bot) inspired by [Rodrigo's](https://www.linkedin.com/in/rodrigo-laguna-7901091a9/) ML project on the classification of garbage containers in the Montevideo city [clean-dirty-preprocess-baseline](https://github.com/rola93/clean-dirty-preprocess-baseline).
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
