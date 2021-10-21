@@ -25,6 +25,7 @@ LOCAL = 'false'
 BUTTONS = ["BUTTON1", "BUTTON2", "BUTTON3", "BUTTON4"]
 QUESTION = 'QUESTION TO THE PEOPLE ABOUT THE IMAGE?'
 CHOSE = 'Chose: '
+GREETING = ' Welcome and thanks for your help!'
 ```
 
 In TOKEN you must copy and paste the token of your bot, previously created.<br>
