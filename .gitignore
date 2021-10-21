@@ -7,5 +7,5 @@ Procfile
 venv/
 .idea/
 __pycache__/
-convertToLinkGoogleDriveDownloader.py
 driveLinksInicial.txt
+log_users.txt

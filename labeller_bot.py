@@ -97,10 +97,15 @@ def button(update: Update, context: CallbackContext) -> None:
 
     chat_id = update.callback_query.message.chat.id
 
+
     with open("log.txt", 'a') as f:
         f.write(query.data + '\n')
 
     with open('finished.txt', 'a') as f:
         f.write(query.data.split(',')[0] + '\n')
+
+    user = update.effective_user
+    with open('log_users.txt', 'a') as f:
+        f.write(fr'{user.mention_markdown_v2()}'+'\n')
 
     send_image(chat_id, update, context)
