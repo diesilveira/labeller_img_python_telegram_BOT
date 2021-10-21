@@ -1,7 +1,7 @@
 import os
 
 #input file
-fin = open("url_images.txt", "rt")
+fin = open("url_images.csv", "rt")
 #output file to write the result to
 fout = open("out.txt", "wt")
 #for each line in the input file
