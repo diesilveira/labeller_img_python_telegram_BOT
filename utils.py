@@ -54,3 +54,25 @@ def generate_keyboard(img_id, chat_id):
                                               callback_data=img_id + ',' + conf.BUTTONS[i + 1])])
         i += 2
     return keyboard
+
+def get_rid_of_this_img(img_id):
+    with open("log.txt", "r") as f:
+        lines = f.readlines()
+    new_lines = []
+    for line in lines:
+        if line.split(',')[1] == img_id:
+            pass
+        else:
+            new_lines.append(line)
+    with open("log.txt", "w") as f:
+        f.writelines(new_lines)
+    with open("finished.txt", "r") as f:
+        lines = f.readlines()
+    new_lines = []
+    for line in lines:
+        if line == img_id:
+            pass
+        else:
+            new_lines.append(line)
+    with open("finished.txt", "w") as f:
+        f.writelines(new_lines)

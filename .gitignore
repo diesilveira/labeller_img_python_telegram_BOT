@@ -9,3 +9,4 @@ venv/
 __pycache__/
 driveLinksInicial.txt
 log_users.txt
+convertToLinkGoogleDriveDownloader.py

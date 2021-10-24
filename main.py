@@ -1,5 +1,5 @@
 import conf
-from Bot import *
+from bot import *
 
 
 def main() -> None:
