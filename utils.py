@@ -16,13 +16,15 @@ def get_random_image():
     else:
         with open('url_images.txt', 'r') as f:
             lines = f.readlines()
-        image = random.choice(lines).split(';')[1]
-        img_id = image.split(';')[0]
+        get_image = random.choice(lines).split(';')
+        image = get_image[1]
+        img_id = get_image[0]
         with open('finished.txt', 'r') as f:
             finished = f.readlines()
         while img_id in finished:
-            image = random.choice(lines).split(';')[1]
-            img_id = image.split(';')[0]
+            get_image = random.choice(lines).split(';')
+            image = get_image[1]
+            img_id = get_image[0]
 
     return [image, img_id]
 

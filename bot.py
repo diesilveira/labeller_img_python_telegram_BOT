@@ -63,12 +63,13 @@ class Bot:
 
         if conf.LOCAL:
             with open(image[0], 'rb') as f:
-                context.bot.send_photo(chat_id, photo=f, reply_markup=reply_markup, disable_notification=True)
+                context.bot.send_message(chat_id, text= conf.QUESTION, photo=f, reply_markup=reply_markup, disable_notification=True)
                 msg_list = self.get_msg_list_for_chat_id(chat_id)
                 msg_list.append(msg_list[-1] + 1)
 
         else:
-            context.bot.send_photo(chat_id[0], photo=image, reply_markup=reply_markup, disable_notification=True)
+            print(image)
+            context.bot.send_photo(chat_id, photo= image[0], reply_markup=reply_markup, disable_notification=True)
             msg_list = self.get_msg_list_for_chat_id(chat_id)
             msg_list.append(msg_list[-1] + 1)
             self.hist.update({chat_id: msg_list})
@@ -80,19 +81,19 @@ class Bot:
         print(query.data)
         if query.data.split(',')[0] == 'Deshacer':
             utils.get_rid_of_this_img(query.data.split(',')[1])
-            query.edit_message_text(text="Deshecho con éxito")
+
+            keyboard = [[InlineKeyboardButton("Deshecho con éxito", callback_data="-")]]
+            reply_markup = InlineKeyboardMarkup(keyboard)
+            query.edit_message_reply_markup(reply_markup=reply_markup)
+
+        elif query.data.split(',')[0] == '-':
+            return
         else:
             if query.answer():
-                # query.edit_message_text(text=f"{conf.CHOSE} {query.data.split(',')[1]}")
-                keyboard = [[InlineKeyboardButton("Deshacer",
-                                                  callback_data="Deshacer"+','+query.data.split(',')[0])]]
+                keyboard = [[InlineKeyboardButton(f"{conf.CHOSE} {query.data.split(',')[1]} ¿Deshacer?",
+                                                  callback_data="Deshacer" + ',' + query.data.split(',')[0])]]
                 reply_markup = InlineKeyboardMarkup(keyboard)
-                context.bot.send_message(chat_id, text=f"{conf.CHOSE} {query.data.split(',')[1]}",
-                                         reply_markup=reply_markup)
-
-                msg_list = self.get_msg_list_for_chat_id(chat_id)
-                msg_list.append(msg_list[-1] + 1)
-                self.hist.update({chat_id: msg_list})
+                query.edit_message_reply_markup(reply_markup=reply_markup)
 
             with open("log.txt", 'a') as f:
                 f.write(query.data + '\n')
@@ -103,13 +104,13 @@ class Bot:
             user = update.effective_user
             with open('log_users.txt', 'a') as f:
                 f.write(fr'{user.mention_markdown_v2()}' + '\n')
-            print(self.hist[chat_id])
+
             image = utils.get_random_image()
             self.send_image(chat_id, image, update, context)
 
             if len(self.get_msg_list_for_chat_id(chat_id)) > 10:
                 list_msgs = self.get_msg_list_for_chat_id(chat_id)
-                for i in range(8):
+                for i in range(9):
                     context.bot.delete_message(chat_id=chat_id, message_id=list_msgs[0])
                     list_msgs.pop(0)
                 self.hist.update({chat_id: list_msgs})
