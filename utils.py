@@ -57,6 +57,11 @@ def generate_keyboard(img_id, chat_id):
         i += 2
     return keyboard
 
+def generate_undo_keyboard(query):
+    keyboard = [[InlineKeyboardButton(f"{conf.CHOSE} {get_action_result_query_data(query)} ¿{conf.UNDO}?",
+                                      callback_data=conf.UNDO + ',' + get_action_query_data(query))]]
+    return keyboard
+
 def get_rid_of_this_img(img_id):
     with open("log.txt", "r") as f:
         lines = f.readlines()
@@ -78,3 +83,11 @@ def get_rid_of_this_img(img_id):
             new_lines.append(line)
     with open("finished.txt", "w") as f:
         f.writelines(new_lines)
+
+
+def get_action_query_data(query):
+    return query.data.split(',')[0]
+
+
+def get_action_result_query_data(query):
+    return query.data.split(',')[1]

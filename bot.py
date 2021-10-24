@@ -63,7 +63,7 @@ class Bot:
 
         if conf.LOCAL:
             with open(image[0], 'rb') as f:
-                context.bot.send_message(chat_id, text= conf.QUESTION, photo=f, reply_markup=reply_markup, disable_notification=True)
+                context.bot.send_photo(chat_id, photo=f, reply_markup=reply_markup, disable_notification=True)
                 msg_list = self.get_msg_list_for_chat_id(chat_id)
                 msg_list.append(msg_list[-1] + 1)
 
@@ -78,21 +78,18 @@ class Bot:
         query = update.callback_query
         chat_id = update.callback_query.message.chat.id
 
-        print(query.data)
-        if query.data.split(',')[0] == 'Deshacer':
-            utils.get_rid_of_this_img(query.data.split(',')[1])
+        if utils.get_action_query_data(query) == conf.UNDO:
+            utils.get_rid_of_this_img(utils.get_action_result_query_data(query))
 
-            keyboard = [[InlineKeyboardButton("Deshecho con éxito", callback_data="-")]]
+            keyboard = [[InlineKeyboardButton(conf.SUCCES_UNDO, callback_data="-")]]
             reply_markup = InlineKeyboardMarkup(keyboard)
             query.edit_message_reply_markup(reply_markup=reply_markup)
 
-        elif query.data.split(',')[0] == '-':
+        elif utils.get_action_query_data(query) == '-':
             return
         else:
             if query.answer():
-                keyboard = [[InlineKeyboardButton(f"{conf.CHOSE} {query.data.split(',')[1]} ¿Deshacer?",
-                                                  callback_data="Deshacer" + ',' + query.data.split(',')[0])]]
-                reply_markup = InlineKeyboardMarkup(keyboard)
+                reply_markup = InlineKeyboardMarkup(utils.generate_undo_keyboard(query))
                 query.edit_message_reply_markup(reply_markup=reply_markup)
 
             with open("log.txt", 'a') as f:
